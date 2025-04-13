@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'scala'
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+jar {
+    manifest {
+        attributes "Author": "Jim.2ha0",
+                "Website": "https://Jim2ha0.blog.csdn.net",
+                "Email": "Jim2ha0@aliyun.com,ipple1986@gmail.com"
+    }
+}
+
+dependencies {
+
+
+    implementation 'org.scala-lang:scala-library:2.13.8'
+//    implementation 'org.scala-lang:scala-reflect:2.13.8'
+
+    testImplementation 'org.scalatest:scalatest_2.13:3.2.9'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+}
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' }
+}
+
+
+test {
+    useJUnitPlatform()
+    jvmArgs (
+            '--add-opens', 'java.base/sun.nio.ch=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.lang=ALL-UNNAMED'
+    )
+}
