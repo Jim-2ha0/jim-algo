@@ -1,14 +1,26 @@
-apply plugin: 'java'
-apply plugin: 'scala'
+plugins {
+    id 'java'
+    id 'scala'
+}
+
+ext {
+    authorName = "Jim 2ha0"
+    authorEmail = "jim2ha0@aliyun.com"
+    authorUrl = "https://jim2ha0.blog.csdn.net/"
+}
 
 sourceCompatibility = 17
 targetCompatibility = 17
 
 jar {
     manifest {
-        attributes "Author": "Jim.2ha0",
-                "Website": "https://Jim2ha0.blog.csdn.net",
-                "Email": "Jim2ha0@aliyun.com,ipple1986@gmail.com"
+        attributes (
+                'Main-Class': 'Welcome',
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Author': project.ext.authorName,
+                'Author-Email': project.ext.authorEmail
+        )
     }
 }
 
@@ -21,6 +33,7 @@ dependencies {
     testImplementation 'org.scalatest:scalatest_2.13:3.2.9'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
 }
+
 repositories {
     maven { url 'https://maven.aliyun.com/repository/public' }
 }
